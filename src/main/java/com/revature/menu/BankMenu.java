@@ -19,6 +19,8 @@ public class BankMenu {
 		System.out.print("Password: ");
 		String password = scan.next();
 		
+		//call user service 
+		
 		System.out.println("\nWelcome Back "+ username + "!\n" +
 				           "\nPlease select one of the options below:\n"+
 				           "1. Sign into Employee Account\n"+
