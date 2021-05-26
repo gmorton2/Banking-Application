@@ -1,37 +1,36 @@
 package com.revature.services;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOImpl;
+import com.revature.model.Customer;
 import com.revature.model.User;
-import com.revature.utilities.ConnectionUtility;
 
 public class UserServiceImpl implements UserService{
-	
-	public UserDAO userL = new UserDAOImpl();
-	private static final Logger LOG = LogManager.getLogger(UserServiceImpl.class);
+	public UserDAO userDAO = new UserDAOImpl();
 	
 	public UserServiceImpl() {}
 	
 	public UserServiceImpl(UserDAO userDAO) {
-		userL=userDAO;
+		this.userDAO=userDAO;
 	}
 	
-	public User logIn(User user) {
-		List<User> users = userL.getAllUsers();
-		LOG.trace("Checking database of users...");
+	public User logIn(String username,String password) {
+		List<User> users = userDAO.getAllUsers();
+		System.out.println("\nChecking database of users...");
 		for(User u : users) {
-			if(u.getUserName().equals(user.getUserName()) && u.getPassword().equals(user.getPassword())) {
-				LOG.debug("Login was Successful.");
+			if(u.getUserName().equals(username) && u.getPassword().equals(password)) {
+				System.out.println("Login was Successful.");
 				return u;
 			}	
 		}
-		LOG.fatal("Login was Unsuccessful.");
+		System.out.println("Login was Unsuccessful.");
 		return null;
+	}
+	
+	public Customer regsiterForCustomerAccount(User user) {
+		Customer customer = userDAO.createAccount(user);
+		return customer;
 	}
 }

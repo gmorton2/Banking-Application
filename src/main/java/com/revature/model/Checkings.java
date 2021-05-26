@@ -1,13 +1,25 @@
 package com.revature.model;
 
 public class Checkings extends Account{
-	
+	String type;
 	public Checkings() {
 		super();
+		type="";
 	}
 
-	public Checkings(double balance, int accountID, Customer customer) {
+	public Checkings(double balance, int accountID, Customer customer,String type) {
+		
 		super(balance, accountID, customer);
+		this.type=type;
+	}
+
+	@Override
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public boolean isValidTransaction(String transactionType, double amount) {

@@ -1,9 +1,8 @@
 package com.revature.utilities;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,29 +28,4 @@ public class ConnectionUtility {
 			connection = DriverManager.getConnection(CONNECTION_URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
 		return connection;
 	}
-	
-	public static void main(String[] args) {
-		
-		try {
-			Connection connection = getConnection();
-			LOG.debug("Connection is valiid "+connection.isValid(5));
-			String sql = "SELECT * FROM users WHERE fullName LIKE ?";
-			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1,  "%t%");
-			ResultSet set = statement.executeQuery();
-			LOG.trace("Executed query: "+sql);
-			while(set.next()) {
-				//might want to leave as prints
-				LOG.info(set.getInt("userID"));
-				LOG.info(set.getString("fullName"));
-				LOG.info(set.getString("username"));
-				LOG.info(set.getString("passwrd"));
-			}
-		}
-		catch(SQLException ex){
-			LOG.fatal("Failure.");
-			ex.printStackTrace();
-		}
-	}
-
 }

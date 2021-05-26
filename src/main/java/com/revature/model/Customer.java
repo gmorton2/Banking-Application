@@ -20,4 +20,34 @@ public class Customer extends User{
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerID=" + customerID + ", name=" + name + ", userName=" + userName + ", password="
+				+ password + ", userID=" + userID + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + customerID;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (customerID != other.customerID)
+			return false;
+		return true;
+	}
+	
+	
 }

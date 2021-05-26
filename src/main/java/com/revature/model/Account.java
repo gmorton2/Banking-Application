@@ -34,4 +34,19 @@ public class Account{
 	public void setAccountID(int accountID) {
 		this.accountID = accountID;
 	}
+	
+	public String getType() {
+		return "";
+	}
+
+	public int getCustomerID() {
+		return customer.getCustomerID();
+	}
+	@Override
+	public String toString() {
+		return "Account [balance=" + balance + ", accountID=" + accountID + ", customer=" + customer + "]";
+	}
+	
+	
+	
 }

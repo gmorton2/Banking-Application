@@ -1,9 +1,9 @@
 package com.revature.services;
 
-import java.util.List;
-
+import com.revature.model.Customer;
 import com.revature.model.User;
 
 public interface UserService {
-	public User logIn(User user);
+	public User logIn(String username,String password);
+	public Customer regsiterForCustomerAccount(User user);
 }

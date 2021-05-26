@@ -1,6 +1,6 @@
 package com.revature.model;
 
-public class User extends System{
+public class User{
 	String name;
 	String userName;
 	String password;
@@ -96,12 +96,4 @@ public class User extends System{
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-
-	public boolean isValidTransaction() {
-		return false;
-	}
-	
-	//public User logIn(String username,String password) {
-		//User
-	//}
 }
